@@ -19,6 +19,7 @@ export default class Rect extends PureComponent {
     styles: PropTypes.object,
     zoomable: PropTypes.string,
     rotatable: PropTypes.bool,
+    onDoubleClick: PropTypes.func,
     onResizeStart: PropTypes.func,
     onResize: PropTypes.func,
     onResizeEnd: PropTypes.func,
@@ -140,7 +141,8 @@ export default class Rect extends PureComponent {
       },
       zoomable,
       rotatable,
-      parentRotateAngle
+      parentRotateAngle,
+      onDoubleClick
     } = this.props
     const style = {
       width: Math.abs(width),
@@ -155,9 +157,11 @@ export default class Rect extends PureComponent {
       <StyledRect
         ref={this.setElementRef}
         onMouseDown={this.startDrag}
+        onDoubleClick={onDoubleClick}
         className="rect single-resizer"
         style={style}
       >
+        {this.props.children}
         {
           rotatable &&
           <div className="rotate" onMouseDown={this.startRotate}>

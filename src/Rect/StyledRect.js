@@ -9,7 +9,7 @@ export default styled.div`
     width: 7px;
     height: 7px;
     background: white;
-    border: 1px solid #eb5648;
+    border: 1px solid #000;
     border-radius: 1px;
   }
 
